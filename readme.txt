@@ -1,0 +1,2 @@
+ A social networking website that allows users to plan trips together and share every aspect of it.
+ Used Node.js as main platform, combined with Jade, Bootstrap CSS as front end, connecting with Oracle Database, with the usage of MongoDB for caching and deployed the website on Amazon EC2. 

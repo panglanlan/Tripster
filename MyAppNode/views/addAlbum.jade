@@ -1,0 +1,44 @@
+extend layout
+block content
+	form(method='post', action='/addalbum')
+		input(type = 'hidden', name = 'tripID', value = '#{tripID}')
+		br
+		|Album name: 
+		br
+		input(name='album_name', value='')
+		br
+		|Privacy:
+		br
+		input(name='privacy', type='radio', value='public', checked)
+		|Public
+		br
+		input(name='privacy', type='radio', value='private')
+		|Private
+		br
+		|Album tag:
+		br
+		input(name='tag', type='radio', value='city', checked)
+		|City
+		br
+		input(name='tag', type='radio', value='view')
+		|View
+		br
+		input(name='tag', type='radio', value='mountain')
+		|Mountain
+		br
+		input(name='tag', type='radio', value='flowers')
+		|Flowers
+		br
+		input(name='tag', type='radio', value='country')
+		|Country
+		br
+		input(name='tag', type='radio', value='people')
+		|People
+		br
+		input(type = 'submit', value = 'Add album')
+
+//	p
+//		| Please click the button to add a new empty button
+//	table
+//		<td><form method="post" action="/addalbum">
+//	<button name="tripID" type="submit" value="#{tripID}">Add album</button></td</tr>            		

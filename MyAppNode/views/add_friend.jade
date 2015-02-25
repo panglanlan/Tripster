@@ -1,0 +1,24 @@
+extends layout
+block content
+	if (fail == true)
+		|Sorry, We cannot finding correspnonding user id or it already exists in your friend list
+	if(pending == true)
+		|Request sent, waiting for the response.
+	h3
+		| Your Friends:
+	br
+	table
+		- for (var inx = 0; inx < results.length; inx++)	
+			tr
+				td=results[inx].FOLLOWING_ID+" "
+				td &nbsp;
+	br
+	br	
+	h3
+		|Add new friend: 
+	form(method='post', action='/add_new_friend')
+		|Friend id:
+		input(name='friend_id', value='')
+		input(type='submit', value='Add friend' class="btn-sm btn-warning")	
+	
+		

@@ -1,0 +1,24 @@
+extend layout
+block content
+  
+  div.top
+    form.form-horizontal(method="post", id="loginForm", action='/signin')
+      label User ID
+      input.span3(id="username", type="text", name="userID", placeholder="Enter your user ID")
+      label Password
+      input.span3(id="password", type="password", name="password", placeholder="Enter your password")
+      input(id="login", type="submit", class="btn btn-warning", value="Log In", )
+    form.form-horizontal(method="get", id="loginForm", action='/register')
+      label New user
+      input(type="submit", class="btn btn-warning", value="Register")
+
+//  p
+  //  | Please enter user id and password to signin:
+    //form(method='post', action='/signin')
+      //input(name='userID', value='')
+      //input(name='password', value='')
+      //input(type='submit', value='Submit')
+//  p
+  //  | Click the button to register:
+    //form(method='get', action='/register')
+      //input(type='submit', value='Register')

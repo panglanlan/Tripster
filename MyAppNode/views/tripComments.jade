@@ -1,0 +1,27 @@
+extend layout
+block content
+	p
+		|	Check Comments and Rating Info Here: #{msg}
+	table
+		- for (var inx = 0; inx < results_comments.length; inx++)
+			<tr>
+			<td>RATER: #{results_comments[inx].USER_ID_RATER}</td>
+			<td>COMMENTS: #{results_comments[inx].COMMENTS}</td>
+			<td>RATING: #{results_comments[inx].RATING}</td> 
+			</tr>      
+	p
+		| Please click the button to add new comments and rate:
+	form(method='post', action='/add_trip_comments')
+		input(type = 'hidden', name = 'tripID', value = '#{results_comments[0].TRIP_ID}')
+		input(type = 'hidden', name='userIDcreator', value='#{results_comments[0].USER_ID}')
+		br
+		|	Comment:
+		br
+		input(name='comment', value='')
+		br
+		|	Rate:
+		br
+		input(name='rate', value='')
+		br
+		input(type = 'submit', value = 'Add comment and rating' class="btn-sm btn-warning")
+		br

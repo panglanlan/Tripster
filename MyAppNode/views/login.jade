@@ -1,0 +1,13 @@
+extends layout
+block content
+  if fail == true
+    p 
+      | Try again,Password and user id was incorrect
+  p
+    | Please enter user id and password:
+  form.form-horizontal(method="post", id="loginForm", action='/signin')
+    label User ID
+    input.span3(id="username", type="text", name="userID", placeholder="Enter your user ID")
+    label Password
+    input.span3(id="password", type="password", name="password", placeholder="Enter your password")
+    input.btn(id="login", type="submit", class="btn btn-warning", value="Log In", )

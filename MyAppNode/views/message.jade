@@ -1,0 +1,31 @@
+extend layout
+block content
+
+	h2
+		| Friend requests:
+	br
+	if (friendFlag == false)
+		| No friend requests.
+	if (friendFlag == true)
+	table
+	- for (var inx = 0; inx < results_friend.length; inx++)
+		<tr><td>#{results_friend[inx].FOLLOWED_ID}</td><td>&nbsp;</td>
+		<td><form method="post" action="/accept_friend"><button name="acceptFriendId" type="submit" value="#{results_friend[inx].FOLLOWED_ID}">Accept</button></form></td>	
+		<td><form method="post" action="/deny_friend"><button name="denyFriendId" type="submit" value="#{results_friend[inx].FOLLOWED_ID}">Delete Request</button></form></td>		
+		</tr>  
+		br  
+	br
+	h2
+		| Trip invitations:
+	br
+	if (tripFlag == false)
+		| No friend requests.
+	if (tripFlag == true)
+	table
+	- for (var inx = 0; inx < results_trip.length; inx++)
+		<tr><td>#{results_trip[inx].USER_ID}</td><td>&nbsp;</td>
+		<td>#{results_trip[inx].TRIP_ID}</td><td>&nbsp;</td>
+		<td><form method="post" action="/accept_trip"><button name="acceptTripId" type="submit" value=#{results_trip[inx].USER_ID}|#{results_trip[inx].TRIP_ID}>Accept</button></form></td>	
+		<td><form method="post" action="/deny_trip"><button name="denyTripId" type="submit" value=#{results_trip[inx].USER_ID}|#{results_trip[inx].TRIP_ID}>Delete Invitation</button></form></td>		
+		</tr>  
+		br

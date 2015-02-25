@@ -1,0 +1,44 @@
+extend layout2
+block content
+	h3
+		|Search users: 
+	form(method='post', action='/search_user')
+		h4	Enter user id or username:
+		input(name='user', value='')
+		input(type='submit', class="btn btn-warning", value='Search users')
+	br	
+	h3	
+		|Search locations: 
+	form(method='post', action='/search_location')
+		h4	Enter location name:
+		input(name='location', value='')
+		input(type='submit', class="btn btn-warning", value='Search locations')
+	br
+	form.form-horizontal(method='post', action='/userprofile')
+		input(type='submit', class="btn btn-warning viewProfile", value='View my profile')	
+
+	form(method='post', action='/recommend_user')
+		input(type='submit', class="btn btn-warning recommend1", value='Recommend users')		
+
+	form(method='post', action='/recommend_location')
+		input(type='submit', class="btn btn-warning recommend2", value='Recommend locations')		
+	.container.posts
+		h1.post
+			| Trip posts:
+	br
+	.container
+		.row
+			- for (var inx = 0; inx < results.length; inx++){
+			.span4
+				h5 Poster: #{results[inx].FULL_NAME}
+				h5 Trip: Name #{results[inx].TRIP_NAME}
+				h5 Schedule: #{results[inx].SCHEDULE}
+				h5 Estimated expense: #{results[inx].EXPENSE}
+				h5 Feature: #{results[inx].FEATURE}
+				form.form-horizontal(method='post', action='/view_other_profile')
+					<button name="userID" type="submit" class="btn-sm btn-warning" value="#{results[inx].USER_ID}">View Profile</button>
+				form.form-horizontal(method='post', action='/othersTrip')
+					<button name="tripInfo" type="submit" class="btn-sm btn-warning" value="#{results[inx].TRIP_ID},#{results[inx].USER_ID}">View Trip</button>
+				br
+			-}
+	

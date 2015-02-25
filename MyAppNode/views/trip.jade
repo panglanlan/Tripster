@@ -1,0 +1,69 @@
+// Jade file to specify output of an actors list
+// Inherits from layout
+extend layout
+block content
+  p
+    | #{msg}
+
+  p
+    | #{tripName}: 
+    
+    h
+    dl
+      dt
+        | TRIP_ID:#{tripID}
+      dt
+        | TRIP_NAME:#{tripName}
+      -if (locationLink==null)
+        dt
+          | TRIP_DESTINATION:#{tripDest}
+      -else    
+        dt
+          | TRIP_DESTINATION:<a href=#{locationLink}>#{tripDest}</a>
+      dt
+        | DESTINATION_TYPE:#{locationType}
+      dt
+        | EXPENSE:#{expense}
+      dt
+        | SCHEDULE:#{schedule}
+      dt
+        | HOTEL:#{hotel}
+      dt
+        | HOTEL_LINK:<a href=#{hotel_hyperlink}> #{hotel}</a>
+      dt
+        | PRIVACY:#{privacy}
+      dt
+        | FEATURE:#{feature}
+     
+  p
+    | Click the button to view and add comments and rate for this trip!
+  form(method='post', action='/tripComments')
+    input(type = 'hidden', name = 'tripID', value = '#{tripID}')
+    input(type = 'hidden', name = 'userIDcreator', value = '#{results.USER_ID}')
+    input(type = 'submit', value = 'View and add comments' class="btn-sm btn-warning")
+
+  p
+    | Albums:
+    table
+    - for (var inx = 0; inx < results_album.length; inx++)
+        <tr><td>#{results_album[inx].ALBUM_NAME}<td><td>&nbsp;</td><td>#{results_album[inx].ALBUM_ID}</td><td>&nbsp;</td>
+        <td><form method="post" action="/showContents">
+        <button name="albumID" type="submit" class="btn-sm btn-warning" value="#{results_album[inx].ALBUM_ID}|#{tripID}|#{trip_userID}">view</button></td></tr></form>            
+  
+   
+  // Put a click button that lets us return to the index page 
+  form(method='post', action='/userprofile')
+      input(type='submit', value='Return' class="btn-sm btn-warning")
+  form(method='post', action='/edit_trip/')
+      input(type='hidden', id='tripID', value='#{tripID}')
+      //input(type='hidden', name='trip_UserID', value='#{trip_userID}') 
+      input(type='submit', name='#{trip_userID}', value='Edit trip' class="btn-sm btn-warning")
+
+  table
+    <form method="post" action="/invite_friend">
+    <button name="tripID" type="submit" value="#{tripID}">Invite Friends</button></form>      
+    
+  p
+  table
+    <form method="post" action="/add_album">
+    <button name="tripID" type="submit" value="#{tripID}">Add album</button></form>         

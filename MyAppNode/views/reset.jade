@@ -1,0 +1,8 @@
+extends layout
+block content
+  p 
+    | Please reset the password
+    
+    form.form-horizontal(method='post', action='/reset')
+      input(name='password', value='')
+      input.btn(type='submit', class="btn btn-warning", value='Submit')

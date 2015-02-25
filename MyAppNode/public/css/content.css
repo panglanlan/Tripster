@@ -1,0 +1,96 @@
+/*
+ * Globals
+ */
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+	
+  color: #333;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+h3 {
+  color: #ff9933;
+  text-align: center;
+  text-shadow: none;	
+}
+h4 {
+  color: #ff9933;
+  text-align: center;
+  text-shadow: none;	
+}
+h5 {
+  color: #999999;
+  text-align: center;
+  text-shadow: none;  
+}
+table {
+  text-align: center;
+}
+.viewProfile {
+  margin-top: 30px;
+}
+.posts {
+  padding: 50px 10px;
+  background-color: #333;
+  background-image: url(/img/login.jpg);
+  font-size: 25px;
+  text-align: center;
+  text-shadow: 0px -1px 0px #4c0a0a;	
+}
+.recommend1 {
+	  margin-top: 20px;
+	  margin-bottom:0;
+}
+.recommend2 {
+	  margin-bottom: 20px;
+}
+.postDetail {
+	color: 0;
+	text-shadow: none;
+}
+
+.myprofile {
+	text-align: center;
+	color: #666666;
+	text-shadow: none;
+}
+/*
+ *header
+ */
+header {
+  padding: 50px 10px;
+  background-color: #333;
+  background-image: url(/img/login.jpg);
+  font-size: 25px;
+  text-align: center;
+  text-shadow: 0px -1px 0px #4c0a0a;
+}
+td {
+	color: #999999;
+	text-shadow: none;
+}
+row {
+	text-align: center;
+}
+}

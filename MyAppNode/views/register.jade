@@ -1,0 +1,28 @@
+extends layout
+block content
+  if fail == true
+    p
+      | Try again, user already exist. 
+  p
+    | Please enter following information to register:
+  form.form-horizontal(method="post", id="loginForm", action='/signup')
+    label User ID
+    input.span3(type="text", name="userID", placeholder="Enter your user ID")
+    label Password
+    input.span3(type="password", name="password", placeholder="Enter your password")
+    label Name
+    input.span3(type="text", name="name", placeholder="Enter your name")
+    label Affiliation
+    input.span3(type="text", name="affiliation", placeholder="Enter your affiliation")
+    label Email
+    input.span3(type="text", name="email", placeholder="Enter your email")   
+    label Privacy
+    input.btn(type="radio", name="privacy", value='public', checked)
+    |     public
+    input.btn(type="radio", name="privacy", value='sharedWithTripMembers')
+    |     Share with trip members
+    input.btn(type="radio", name="privacy", value='private')
+    |     Private
+    label Interest
+    input.span3(type="text", name="interest", placeholder="Enter your interest") 
+    input.btn(type="submit", class="btn btn-warning", value="Submit")

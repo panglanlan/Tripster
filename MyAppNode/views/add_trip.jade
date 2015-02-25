@@ -1,0 +1,45 @@
+extend layout
+block content
+	p
+		|	#{msg}
+	form(method='post', action='/addtrip')
+		|Trip name: 
+		br
+		input(name='trip_name', value='')
+		br
+		|Schedule:
+		br
+		input(name='schedule', value='')
+		br
+		|Hotel: 
+		br
+		input(name='hotel', value='')
+		br
+		|Hotel hyperlink: 
+		br
+		input(name='hotel_url', value='')
+		br
+		|Estimated expenses: 
+		br
+		input(name='expense', value='')
+		br
+		|Trip feature: 
+		br
+		input(name='feature', value='')
+		br
+		|Privacy:
+		br
+		input(name='privacy', type='radio', value='public', checked)
+		|Public
+		br
+		input(name='privacy', type='radio', value='sharedWithTripMembers')
+		|Share with trip members
+		br
+		input(name='privacy', type='radio', value='private')
+		|Private
+		br
+		input(type='submit', value='Create trip')
+		
+		
+		
+		

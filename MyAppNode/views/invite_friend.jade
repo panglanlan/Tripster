@@ -1,0 +1,17 @@
+extends layout
+block content
+	if (fail == true)
+		|Sorry, your friend has already joined the trip.
+	if(pending == true)
+		|Request sent, waiting for the response.
+	h3
+		| Your Friends:
+	br
+	table
+	- for (var inx = 0; inx < results.length; inx++)
+		<tr><td>#{results[inx].FOLLOWING_ID}<td><td>&nbsp;</td>
+		br
+		<td><form method="post" action="/invite_friend_to_trip">
+		<button name="friendID" type="submit" class="btn-sm btn-warning" value=#{results[inx].FOLLOWING_ID}|#{tripID}>Invite</button></form></td></tr>          		
+		br
+		br

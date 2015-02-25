@@ -1,0 +1,6 @@
+extend layout2
+block content
+	h5 Locations:
+	table
+	- for (var inx = 0; inx < results.length; inx++)
+		h5	#{results[inx].LOCATION_ID}		#{results[inx].LOCATION_NAME}		#{results[inx].LOCATION_TYPE}

@@ -1,0 +1,38 @@
+extend layout
+block content
+
+  p
+    | #{title}:
+    | User id
+    form(method='post', action='/query_edituserprofile')
+      |Full name:
+      br
+      input(name='full_name', value=results[0].FULL_NAME)
+      br
+      |Email:
+      br
+      input(name='email', value=results[0].EMAIL)
+      br
+      |Affiliation:
+      br
+      input(name='affiliation', value=value=results[0].AFFILIATION)
+      br
+      |Interests:
+      br
+      input(name='interest', value=value=results[0].INTEREST)
+      br
+      |Privacy:
+      br
+      input(name='privacy', type='radio', value='public', checked)
+      |Public
+      br
+      input(name='privacy', type='radio', value='sharedWithTripMembers')
+      |Share with trip members
+      br
+      input(name='privacy', type='radio', value='private')
+      |Private
+      br
+      input(type='submit', value='Change profile' class="btn-sm btn-warning")
+      br
+   form(method='post', action='/changePassword')
+      input(type='submit', value='Change password' class="btn-sm btn-warning")

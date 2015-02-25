@@ -1,0 +1,14 @@
+extends layout
+block content
+  if fail == true
+    p 
+      | Try again,Password and Username was incorrrect
+  if success == true
+    p 
+      | User Succesfully Registered, Please log in
+  p
+    | Please enter an actor last name:
+    form(method='post', action='/login')
+      input(name='userID', value='')
+      input(name='password', value='')
+      input(type='submit', value='Submit')

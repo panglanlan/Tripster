@@ -1,0 +1,60 @@
+// Jade file to specify output of an actors list
+// Inherits from layout
+extend layout
+block content
+  p
+    | #{msg}
+
+  p
+    | #{tripName}: 
+    
+    h
+      | Trip Information:
+    dl
+      dt
+        | TRIP_ID
+      dd #{tripID}
+      dt
+        | TRIP_NAME
+      dd #{tripName}
+      dt
+        | TRIP_DESTINATION
+      dd #{tripDest}
+      dt
+        | EXPENSE
+      dd #{expense}
+      dt
+        | SCHEDULE:
+      dd #{schedule}
+      dt
+        | HOTEL
+      dd #{hotel}
+      dt
+        | HOTEL_LINK
+      dd <a href=#{hotel_hyperlink}> #{hotel}</a>
+      dt
+        | PRIVACY
+      dd #{privacy}
+      dt
+        | FEATURE
+      dd #{feature}
+    
+  p
+    | Click the button to view and add comments and rate for this trip!
+  form(method='post', action='/othersTripComments')
+    input(type = 'hidden', name = 'tripID', value = '#{tripID}')
+    input(type = 'hidden', name = 'userIDcreator', value = '#{trip_userID}')
+    input(type = 'submit', value = 'View and add comments', class="btn-sm btn-warning")
+
+  p
+    | Albums:
+    table
+      - for (var inx = 0; inx < results_album.length; inx++)
+          <tr><td>#{results_album[inx].ALBUM_NAME}<td><td>&nbsp;</td><td>#{results_album[inx].ALBUM_ID}</td><td>&nbsp;</td>
+          <td><form method="post" action="/othersShowContents">
+          <button name="albumID" type="submit" value="#{results_album[inx].ALBUM_ID}|#{tripID}|#{trip_userID}" class="btn-sm btn-warning">view</button></td></tr></form>            
+  
+   
+  // Put a click button that lets us return to the index page 
+  form(method='post', action='/userprofile')
+      input(type='submit', value='Return' class="btn-sm btn-warning")

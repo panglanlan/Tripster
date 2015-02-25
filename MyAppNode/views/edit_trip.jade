@@ -1,0 +1,55 @@
+extend layout
+block content
+
+  p
+    | #{results[0].TRIP_NAME}:
+    | User id
+    form(method='post', action='/query_edittrip')
+      |TRIP_ID:
+      br
+      input(name='tripID', value=results[0].TRIP_ID)
+      br
+      |TRIP_NAME:
+      br
+      input(name='tripName', value=results[0].TRIP_NAME)
+      br
+      |TRIP_DESTINATION:
+      br
+      input(name='tripDest', value= results[0].LOCATION_NAME)
+      br
+      |LOCATION_TYPE:
+      br
+      input(name='locationType', value= results[0].LOCATION_TYPE)
+      br
+      |LOCATION_HYPERLINK:
+      br
+      input(name='locaionLink', value= results[0].HYPERLINK)
+      br
+      |EXPENSE:
+      input(name='expense', value=results[0].EXPENSE)
+      br
+      |SCHEDULE
+      input(name='schedule', value=results[0].SCHEDULE)
+      br
+      |HOTEL
+      input(name='hotel', value=results[0].HOTEL)
+      br
+      |HOTEL_LINK
+      input(name='hotel_link', value=results[0].HOTEL_HYPERLINK)
+      br
+      |FEATURE
+      input(name='feature', value=results[0].FEATURE) 
+      br
+      |Privacy:
+      br
+      input(name='privacy', type='radio', value='public', checked)
+      |Public
+      br
+      input(name='privacy', type='radio', value='sharedWithTripMembers')
+      |Share with trip members
+      br
+      input(name='privacy', type='radio', value='private')
+      |Private
+      br
+      input(type='submit', value='Change trip')
+      br

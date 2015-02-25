@@ -1,0 +1,36 @@
+extend layout
+block content
+	if	state == fail
+		p
+			|	failed to add photos, please try again.
+	form(method='post', action='/add_contents')
+		input(type = 'hidden', name = 'tripID', value = '#{tripID}')
+		input(type = 'hidden', name='albumID', value='#{albumID}')
+		input(type = 'hidden', name = 'objectSource', value = 'G17')
+		input(type = 'hidden', name = 'objectType', value = 'photo')
+		br
+		|URL: 
+		br
+		input(name='url', value='')
+		br
+		|Photo tag:
+		br
+		input(name='tag', type='radio', value='city', checked)
+		|City
+		br
+		input(name='tag', type='radio', value='view')
+		|View
+		br
+		input(name='tag', type='radio', value='mountain')
+		|Mountain
+		br
+		input(name='tag', type='radio', value='flowers')
+		|Flowers
+		br
+		input(name='tag', type='radio', value='country')
+		|Country
+		br
+		input(name='tag', type='radio', value='people')
+		|People
+		br
+		input(type = 'submit', value = 'Add photo')

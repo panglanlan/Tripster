@@ -1,0 +1,53 @@
+// Jade file to specify output of an actors list
+// Inherits from layout
+extend layout2
+block content
+  h5 #{title}:
+  // Create a table with one row per result
+  if userID == '5'
+    form(method='get', action='/adminMongo')
+      input(type='submit', value='Check and Cache Photos')
+  .container.myprofile
+    - for (var inx = 0; inx < results.length; inx++)
+        tr.myprofile
+          th Name: 
+          th=results[inx].FULL_NAME+" "
+          th &nbsp;
+          th User ID: 
+          th=results[inx].USER_ID
+          th &nbsp;
+          th Email: 
+          th=results[inx].EMAIL
+          th &nbsp;
+          th Affiliation: 
+          th=results[inx].AFFILIATION
+          th &nbsp;
+          th Interest 
+          th=results[inx].INTEREST
+  // Put a click button that lets us return to the index page
+  br
+  .container
+      .row
+          .span1.offset4
+              form.form-horizontal(method='get', action='/message')
+                  input(type='submit', class="btn-sm btn-warning", value='Messages')
+          .span1
+              form.form-horizontal(method='post', action='/edit_profile')
+                  input(type='submit', class="btn-sm btn-warning", value='Edit Profile')
+          .span1
+              form.form-horizontal(method='post', action='/add_friend')
+                  input(type='submit', class="btn-sm btn-warning", value='My friends')         
+          .span1
+              form.form-horizontal(method='post', action='/add_trip')
+                  input(type='submit',class="btn-sm btn-warning", value='Create trip')
+          .span1
+              form.form-horizontal(method='get', action='/signin_back')
+                  input(type='submit', class="btn-sm btn-warning", value='Return')                  
+      .row
+          h3 Trips
+          table
+                - for (var inx = 0; inx < results_trip.length; inx++)
+                    <tr><td>#{results_trip[inx].TRIP_NAME}<td><td>&nbsp;</td><td>#{results_trip[inx].TRIP_ID}</td><td>&nbsp;</td>
+                    <td>#{results_trip[inx].TRIP_NAME}</td>
+                    <td>&nbsp;</td><td>#{results_trip[inx].TRIP_ID}</td><td>&nbsp;</td>
+                    <td><form method="post" action="/trip"><button name="tripID" type="submit" class="btn-sm btn-warning" value="#{results_trip[inx].TRIP_ID}">view</button></td></tr>      

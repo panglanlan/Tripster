@@ -1,0 +1,9 @@
+extend layout2
+block content
+	h5	Users:
+	table
+	- for (var inx = 0; inx < results.length; inx++)
+		h5 UserID: #{results[inx].USER_ID}
+		h5 Name: #{results[inx].FULL_NAME}
+		form.form-horizontal(method='post', action='/view_other_profile')
+			<button name="userID" type="submit" class="btn-sm btn-warning" value="#{results[inx].USER_ID}">View Profile</button>
